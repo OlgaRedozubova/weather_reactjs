@@ -183,7 +183,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
   <div class="row">
     <div class="col-4">
       <div class="list-group" id="list-tab" role="tablist">
-        <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="tab" href="#list-home" role="tab" aria-controls="list-home">Home</a>
+        <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="tab" href="#list-home" role="tab" aria-controls="list-home">Index</a>
         <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="tab" href="#list-profile" role="tab" aria-controls="list-profile">Profile</a>
         <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="tab" href="#list-messages" role="tab" aria-controls="list-messages">Messages</a>
         <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="tab" href="#list-settings" role="tab" aria-controls="list-settings">Settings</a>
@@ -212,7 +212,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
 <div class="row">
   <div class="col-4">
     <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Index</a>
       <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
       <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
       <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
@@ -237,7 +237,7 @@ You can activate a list group navigation without writing any JavaScript by simpl
 {% highlight html %}
 <!-- List group -->
 <div class="list-group" id="myList" role="tablist">
-  <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Home</a>
+  <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Index</a>
   <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Profile</a>
   <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
   <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Settings</a>
@@ -294,7 +294,7 @@ Activates a list item element and content container. Tab should have either a `d
 
 {% highlight html %}
 <div class="list-group" id="myList" role="tablist">
-  <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Home</a>
+  <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Index</a>
   <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Profile</a>
   <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
   <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Settings</a>

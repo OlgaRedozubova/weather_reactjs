@@ -8,9 +8,13 @@
 }
 
 .App-header {
+  display: flex;
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  /*height: 150px;*/
+  padding: 5px 15px;
   color: white;
 }
 
@@ -20,6 +24,28 @@
 
 .App-intro {
   font-size: large;
+}
+.App-header .nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: white;
+}
+
+.App-header .nav .selected {
+  color: #b3d7ff;
+}
+
+.home {
+  padding: 15px;
+}
+
+.home .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home .header h2 {
+  margin-right: 15px;
 }
 
 @keyframes App-logo-spin {
