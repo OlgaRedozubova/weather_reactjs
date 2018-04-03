@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link  rel = "stylesheet" href="/vendor/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <script src="vendor/bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+<h1>Weather</h1>
+<form>
+    <input type="text" name="city" value="Kiev" placeholder="Please, input the city">
+    <button type="submit">Ok</button>
+</form>
+<!-- <table>
+<thead><tr><th>Id</th><th>Title</th><th>Description</th><th>Completed</th><th></th></tr></thead>
+<tbody>
+</tbody>
+</table> -->
+
+<div class="weathers">
+
+</div>
+
+<div class="weather">
+
+</div>
+
+
+
+<script>
+    function GetTasks() {
+        $.ajax({
+            url: "/weather",
+            type: "GET",
+            contentType: "application/json",
+            success: function (weathers) { //Вешаем свой обработчик //локальный AJAX Event, срабатывает если ошибок не возникло
+                var rows = "";
+
+                $.each(weathers.main, function (key, item) {
+                    rows += row(key, item);
+                });
+
+                $('.weathers').append(rows);
+            }
+        });
+    }
+
+    // создание строки для таблицы
+    var row = function (key, item) {
+        return "<div>" +
+            "<span>" + key + ": </span>" +
+            "<span>" + item + "</span>" +
+            "</div>";
+    };
+
+    function getWeather(city) {
+      $.ajax({
+          url: "/weather/" + city,
+          contentType: "application/json",
+          method: "GET",
+          success: function (weather) {
+              console.log("/weather/" + city);
+              var rows = "";
+              $.each(weather.main, function (key, item) {
+                  rows += row(key, item);
+              });
+              $('.weather').append(rows);
+          }
+      })  
+    };
+    
+    $("form").submit(function (e) {
+        e.preventDefault();
+        const city = this.elements["city"].value;
+
+        getWeather(city);
+        console.log(city);
+
+    });
+
+    // загрузка пользователей
+    GetTasks();
+
+</script>
+</body>
+</html>
