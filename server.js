@@ -1,14 +1,18 @@
 const express = require('express');
 const server = express();
 const fs = require('fs');
-const router = express.Router();
+const routerWeather = express.Router();
+const routerTowns = express.Router();
+
+const Promise = require('bluebird');
+
 const rp = require('request-promise');
 const appid = "b6907d289e10d714a6e88b30761fae22";
 
 const port = process.env.PORT || 5000;
 
 
-router.route("/weather")
+routerWeather.route("/")
     .get(function(req, res){
         const request = require('request');
         const city = "Kiev";
@@ -25,7 +29,7 @@ router.route("/weather")
         //     });
 
         rp({
-            uri: "http://samples.openweathermap.org/data/2.5/weather",
+            uri: "http://openweathermap.org/data/2.5/weather",
             qs: {
                 q: 'Kiev',
                 appid: appid
@@ -45,10 +49,10 @@ router.route("/weather")
 
     });
 
-router.route("/weather/:id")
+routerWeather.route("/:id")
     .get( function (req, res) {
         rp({
-            uri: "http://samples.openweathermap.org/data/2.5/weather",
+            uri: "http://openweathermap.org/data/2.5/weather",
             qs: {
                 q: req.params.id,
                 appid: appid
@@ -68,7 +72,29 @@ router.route("/weather/:id")
     });
 
 
-server.use('/', router);
+routerTowns.route("/")
+    .get(function(req, res){
+
+         const content = fs.readFileSync("towns.json", "utf8");
+         const towns = JSON.parse(content);
+         res.send(towns);
+
+
+        // fs.readFileAsync("towns.json").then(JSON.parse).then(function (val) {
+        //     console.log(val.success);
+        // })
+        //     .catch(SyntaxError, function (e) {
+        //         console.error("invalid json in file");
+        //     })
+        //     .catch(function (e) {
+        //         console.error("unable to read file");
+        //     });
+
+    });
+
+
+server.use('/api/weather', routerWeather);
+server.use('/api/towns', routerTowns);
 
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
