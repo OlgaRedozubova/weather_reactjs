@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, ButtonToolbar, Form, FormGroup, ControlLabel, FormControl, Grid, Row, Col, Table } from 'react-bootstrap';
 
 import Weather from '../../components/Weather/index';
 
@@ -10,6 +11,7 @@ class Index extends Component {
         bodyCity: {},
         city: '',
         isCity:false,
+        townValue:''
     };
     componentDidMount() {
         this.callApi()
@@ -30,44 +32,39 @@ class Index extends Component {
         return body;
     };
 
+
+    refreshPage = () => {
+        this.callApi()
+            .then(res => {this.setState({
+                body: res,
+            });
+                console.log('body', this.state.body);
+            })
+            .catch(err => console.log(err));
+    };
+
     callApi_City = async () => {
-        const response = await fetch('/api/weather/' + this.cityName.value);
+        const response = await fetch('/api/weather/' + this.state.townValue);
         const body = await response.json();
-        // console.log('city',this.cityName.value);
         if (response.status !== 200) throw Error(body.message);
-        // console.log(body.main);
-        //console.log(response);
         return body.main;
     };
 
 
     setCity = (e) =>{
         e.preventDefault();
-        if (this.cityName.value === '') {
-            alert('Внимание! Не указан город!');
-        }
 
-        this.cityName.value &&
         this.callApi_City()
             .then(res => {this.setState({bodyCity: res,
                 isCity: true,
-                city: this.cityName.value})})
+                city: this.state.townValue})})
             .catch(err => console.log(err));
 
     };
 
-    // callApi_Town = async () => {
-    //     const response = await fetch('/api/towns/'
-    //         + this.cityName.value);
-    //     const body = await response.json();
-    //     if (response.status !== 200) throw Error(body.message);
-    //     return body.main;
-    //
-    //
-    // };
 
     addTown = () => {
-            console.log('towns', this.cityName.value);
+
         fetch('/api/towns/', {
             method: 'POST',
             headers: {
@@ -75,19 +72,34 @@ class Index extends Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                name: this.cityName.value,
+                name: this.state.townValue,
             })
         })
 
-        .then((req,res) => {console.log('res',res);
-            //console.log('res',req);
-             //   res.json();
-        })
-        .catch(err => console.log(err));
+        // .then((req,res) => {console.log('res',res.status);
+        //
+        // })
+        .catch(err => console.log('err', err));
 
+    };
 
+    addTownRefresh =() => {
+        this.addTown();
+        this.refreshPage();
 
+    };
 
+    getValidationState() {
+        const length = this.state.townValue.length;
+        if (length > 3) return 'success';
+        else if (length > 2) return 'warning';
+        else if (length > 0) return 'error';
+        return null;
+    }
+
+    handleChange = (e) => {
+        console.log(e.target.value);
+          this.setState({ townValue: e.target.value });
     };
 
     render(){
@@ -95,34 +107,79 @@ class Index extends Component {
         const listTowns = [...this.state.body];
         return (
             <div className="home">
-                <form onSubmit={this.setCity}>
-                    <input type="text"
-                           ref = {(input) => {this.cityName = input;}}
-                           name="city" placeholder="Please, input the city"/>
-                    <button type="submit">OK</button>
-                    <button onClick={this.addTown}>Add</button>
-                </form>
+                <Form inline onSubmit={this.setCity}>
+
+                    <FormGroup
+                        controlId="formControlsText"
+                        validationState={this.getValidationState()}
+                    >
+                        <ControlLabel>Город </ControlLabel>
+                        <FormControl
+                            type="text"
+                           // value = {this.state.townValue}
+                            placeholder="Please, input the city"
+                            onChange={this.handleChange}
+                        />
+                        <Button  type="submit">OK</Button>
+                        <Button bsStyle="success" onClick={this.addTown}>Add</Button>
+                        <Button bsStyle="success" onClick={this.refreshPage}>Refresh</Button>
+                    </FormGroup>
+                </Form>
+                <ButtonToolbar>
+                    {/*<Button bsStyle="success" onClick={this.addTown}>Add</Button>*/}
+                    <Button bsStyle="success" onClick={this.addTownRefresh}>Add_Refresh</Button>
+                </ButtonToolbar>
 
                 <div>
                     <h2>Первоначальные данные:</h2>
+                    <Grid>
+                        <Row>
+                            <Col sm={6} md={4}>
+                            Выберите город
+                                {this.state.isCity &&
+                                <Weather {...this.state}/>}
 
-                    {listTowns.map((item, index) => (
-                        <div key={index} className="row">
-                            <p className="col-md-3">{item.name}</p>
-                        </div>)
-                    )}
+                            </Col>
+                            <Col sm={6} md={8}>
+                            temp
 
-                    {/*{Object.keys(this.state.body).map(id => (*/}
-                        {/*<div key={id} className="card-panel">*/}
-                            {/*<span>{id}: </span><span>{this.state.body[id]}</span>*/}
-                        {/*</div>*/}
-                    {/*))}*/}
+                                <Table striped bordered condensed hover>
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Temp</th>
+                                        <th>Pressure</th>
+                                        <th>Humidity</th>
+                                        <th>Temp min</th>
+                                        <th>Temp max</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    {listTowns.map((item, index) => (
+                                    <tr key={index}>
+                                        <td>{item.name}</td>
+                                        <td>{item.main.temp}</td>
+                                        <td>{item.main.pressure}</td>
+                                        <td>{item.main.humidity}</td>
+                                        <td>{item.main.temp_min}</td>
+                                        <td>{item.main.temp_max}</td>
+                                    </tr>)
+                                    )}
+
+                                    </tbody>
+                                </Table>
+                            </Col>
+                        </Row>
+
+                    </Grid>
+
                 </div>
-                <div className="container">
+                {/*<div className="container">*/}
 
-                    {this.state.isCity &&
-                    <Weather {...this.state}/>}
-                </div>
+                    {/*{this.state.isCity &&*/}
+                    {/*<Weather {...this.state}/>}*/}
+                {/*</div>*/}
             </div>
         )
     }

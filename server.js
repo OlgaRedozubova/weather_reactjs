@@ -126,6 +126,7 @@ routerTowns.route("/")
 
         const townsList = JSON.parse(fs.readFileSync("towns.json", "utf8"));
         res.send(townsList);
+        console.log('get');
 
     })
     .post(jsonParser, (req, res) => {
@@ -140,13 +141,8 @@ routerTowns.route("/")
         towns.push(town);
 
         fs.writeFileSync("towns.json", JSON.stringify(towns));
-
-        //console.log('town', town);
-        console.log('res.send', res);
-        res.send(town);
-
-       // console.log('res.send', res);
-
+        res.sendStatus(200);
+//        console.log('server res', res);
 
         }
 
