@@ -80,7 +80,7 @@ routerTowns.route("/")
          res.send(towns);
 
 
-        // fs.readFileAsync("towns.json").then(JSON.parse).then(function (val) {
+        // fs.readFileSync("towns.json").then(JSON.parse).then(function (val) {
         //     console.log(val.success);
         // })
         //     .catch(SyntaxError, function (e) {
