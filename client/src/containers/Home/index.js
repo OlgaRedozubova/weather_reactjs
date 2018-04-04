@@ -19,10 +19,11 @@ class Index extends Component {
                 console.log('body', this.state.body);
             })
             .catch(err => console.log(err));
-    }
+    };
+
 
     callApi = async () => {
-        const response = await fetch('/api/towns');
+        const response = await fetch('/api/weather');
         const body = await response.json();
         if (response.status !== 200) throw Error(body.message);
 
@@ -55,11 +56,42 @@ class Index extends Component {
 
     };
 
+    // callApi_Town = async () => {
+    //     const response = await fetch('/api/towns/'
+    //         + this.cityName.value);
+    //     const body = await response.json();
+    //     if (response.status !== 200) throw Error(body.message);
+    //     return body.main;
+    //
+    //
+    // };
+
     addTown = () => {
-        console.log(this.state.city);
+            console.log('towns', this.cityName.value);
+        fetch('/api/towns/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: this.cityName.value,
+            })
+        })
+
+        .then((req,res) => {console.log('res',res);
+            //console.log('res',req);
+             //   res.json();
+        })
+        .catch(err => console.log(err));
+
+
+
+
     };
 
     render(){
+
         const listTowns = [...this.state.body];
         return (
             <div className="home">
