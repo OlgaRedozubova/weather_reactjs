@@ -94,34 +94,35 @@ routerWeather.route("/")
             if (!req.body) return res.sendStatus(400);
             console.log('S_req.body', req.body);
 
-
             const town = req.body;//{name: townName};
             fs.readFile("towns.json", "utf8", function(err, file){
                 if(!err){
                     const towns = JSON.parse(file);
-                    towns.push(town);
-                    const newFile = JSON.stringify(towns);
-                    fs.writeFile("towns.json", newFile, function (err) {
-                        if (!err) {
-                            getWeatherTowns(towns, req, res);
-                            console.log('Ok', towns);
-                            //  res.send(towns);
+                    let isNeedAddTown = true;
+//------------------------------
+
+                    for (key in towns) {
+                        if (towns[key].name === town.name) {
+                            isNeedAddTown = false;
+                            console.log('Town already exists id LikeList!', key)
                         }
-                    });
+                    }
+//-----------------------------
+                    if (isNeedAddTown) {
+                        towns.push(town);
+                        const newFile = JSON.stringify(towns);
+                        fs.writeFile("towns.json", newFile, function (err) {
+                            if (!err) {
+                                getWeatherTowns(towns, req, res);
+                                console.log('Ok', towns);
+                                //  res.send(towns);
+                            }
+                        });
+                    } else {
+                        res.sendStatus(204);// ('Already Exists')
+                    }
                 }
             });
-            //
-
-            //
-            //
-            // getWeatherTowns(towns, req, res);
-
-        // getWeatherTowns(towns, req, res);
-
-
-
-
-
         }
     );
 

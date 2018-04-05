@@ -9,9 +9,10 @@ class Index extends Component {
         response: '',
         body: {},
         bodyCity: {},
-        city: '',
         isCity:false,
-        townValue:''
+        isAlreadyAdd:false,
+        townValue:'',
+        townName: ''
     };
     componentDidMount() {
         this.callApi()
@@ -59,9 +60,13 @@ class Index extends Component {
             .then(res => {
                 console.log('res',res);
                 if(res) {
-                    this.setState({bodyCity: res,
-                    isCity: true,
-                    city: this.state.townValue})
+                    this.setState({
+                        bodyCity: res,
+                        isCity: true,
+                        townName: this.state.townValue,
+                        //city: this.state.townValue,
+
+                        isAlreadyAdd: false})
                 }})
             .catch(err => console.log('err_setCity', err));
     };
@@ -77,6 +82,7 @@ class Index extends Component {
             },
             body: JSON.stringify({
                 name: this.state.townValue,
+                isAlreadyAdd: false
             })
         })
          .then((res) => {
@@ -104,18 +110,26 @@ class Index extends Component {
                 name: this.state.townValue,
             })}
             );
-        const body = await response.json();
-        if (response.status !== 200) throw Error(body.message);
-        return body;
+        if (response.status !== 204) {
+            const body = await response.json();
+            if (response.status !== 200) throw Error(body.message);
+            return body;
+        } else {
+            this.setState({isAlreadyAdd:true})
+        }
     };
 
     addTownRefresh =() => {
+
         this.callApi_Town()
             .then(res => {
-                this.setState({
-                    body: res,
-                });
-                console.log('body', this.state.body);
+                if (res) {
+                    this.setState({
+                        body: res,
+                        isAlreadyAdd:false
+                    });
+                }
+                //console.log('res', res.status);
             })
             .catch(err => console.log(err));
     };
@@ -130,7 +144,9 @@ class Index extends Component {
 
     handleChange = (e) => {
         console.log(e.target.value);
-          this.setState({ townValue: e.target.value });
+          this.setState({ townValue: e.target.value,
+              isAlreadyAdd: false
+            });
     };
 
     render(){
@@ -166,17 +182,30 @@ class Index extends Component {
                     <h2>Первоначальные данные:</h2>
                     <Grid>
                         <Row>
-                            {this.state.isCity &&
                             <Col sm={6} md={4}>
+                                {!this.state.isCity &&
                                 <div className="title_left">
-
-                                    <h3>Weather in the <strong> {this.state.townValue}</strong></h3>
-                                    <Button bsSize="xsmall" bsStyle="success" onClick={this.addTownRefresh}>Like</Button>
+                                    <h3>Укажите город</h3>
                                 </div>
+                                }
 
-                                <Weather {...this.state}/>
+                                {this.state.isCity &&
+                                <div>
+                                    <div className="title_left">
 
-                            </Col>}
+                                        <h3>Weather in the <strong> {this.state.townName}</strong></h3>
+                                        <Button bsSize="xsmall" bsStyle="success"
+                                                onClick={this.addTownRefresh}>Like</Button>
+
+                                        {this.state.isAlreadyAdd &&
+                                            alert('Town ' + this.state.townName  + ' already exists in LikeList!')
+                                        }
+                                    </div>
+
+                                    <Weather {...this.state}/>
+                                </div>
+                                }
+                            </Col>
                             <Col sm={6} md={8}>
                                 <Table striped bordered condensed hover>
                                     <thead>
