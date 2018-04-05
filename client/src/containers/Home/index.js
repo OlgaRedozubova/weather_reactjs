@@ -11,6 +11,7 @@ class Index extends Component {
         bodyCity: {},
         isCity:false,
         isAlreadyAdd:false,
+        isNotTown:false,
         townValue:'',
         townName: ''
     };
@@ -47,7 +48,7 @@ class Index extends Component {
     callApi_City = async () => {
         const response = await fetch('/api/weather/' + this.state.townValue);
         const body = await response.json();
-       // if (response.status === 304) {console.log('304')}
+      //  if (response.status === 304) {console.log('304')}
         if (response.status !== 200) throw Error(body.message);
         return body.main;
     };
@@ -64,10 +65,17 @@ class Index extends Component {
                         bodyCity: res,
                         isCity: true,
                         townName: this.state.townValue,
+                        isNotTown: false,
                         //city: this.state.townValue,
 
                         isAlreadyAdd: false})
-                }})
+                } else {
+                    alert('Внимание! Нет такого города!');
+                    this.setState({
+                        isNotTown:true
+                    })
+                }
+            })
             .catch(err => console.log('err_setCity', err));
     };
 
