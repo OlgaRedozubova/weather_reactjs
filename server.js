@@ -52,14 +52,11 @@ const port = process.env.PORT || 5000;
 //         });
 //
 //     });
+///
 
-
-function getWeatherTowns(townsList, req, res) {
-
+function getWeatherTowns(townsList, req, res) { console.log('getWeatherTowns1')
     const promiseList =[];
-
     townsList.map((item) => (
-        //console.log('name', item.name)
         promiseList.push(
             rp({
                 uri: uriWeather,
@@ -81,7 +78,6 @@ function getWeatherTowns(townsList, req, res) {
         )
     ));
 
-
     Promise.all(promiseList)
         .then(value => {
             return res.json(value);
@@ -93,8 +89,41 @@ routerWeather.route("/")
     .get(function(req, res){
         const townsList = JSON.parse(fs.readFileSync("towns.json", "utf8"));
         getWeatherTowns(townsList, req, res);
-    });
+    })
+    .post(jsonParser, (req, res) => {
+            if (!req.body) return res.sendStatus(400);
+            console.log('S_req.body', req.body);
 
+
+            const town = req.body;//{name: townName};
+            fs.readFile("towns.json", "utf8", function(err, file){
+                if(!err){
+                    const towns = JSON.parse(file);
+                    towns.push(town);
+                    const newFile = JSON.stringify(towns);
+                    fs.writeFile("towns.json", newFile, function (err) {
+                        if (!err) {
+                            getWeatherTowns(towns, req, res);
+                            console.log('Ok', towns);
+                            //  res.send(towns);
+                        }
+                    });
+                }
+            });
+            //
+
+            //
+            //
+            // getWeatherTowns(towns, req, res);
+
+        // getWeatherTowns(towns, req, res);
+
+
+
+
+
+        }
+    );
 
 
 routerWeather.route("/:id")
@@ -120,7 +149,6 @@ routerWeather.route("/:id")
     });
 
 
-
 routerTowns.route("/")
     .get(function(req, res){
 
@@ -131,21 +159,31 @@ routerTowns.route("/")
     })
     .post(jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400);
-
+         console.log('S_req.body', req.body);
+         //console.log('S_res', res);
         const townName = req.body.name;
         const town = {name: townName};
 
         const towns = JSON.parse(fs.readFileSync("towns.json", "utf8"));
 
-        //console.log(towns);
         towns.push(town);
 
-        fs.writeFileSync("towns.json", JSON.stringify(towns));
-        res.sendStatus(200);
-//        console.log('server res', res);
+        //fs.writeFileSync("towns.json", JSON.stringify(towns));
+        fs.writeFile("towns.json", JSON.stringify(towns) , function (err) {
+            if (!err) {
+                console.log('OK!');
+                const townsList = JSON.parse(fs.readFileSync("towns.json", "utf8"));
+                console.log('townsList',townsList);
+
+                res.send(townsList);
+                console.log('server res', res);
+            }
+        });
+
+
+
 
         }
-
     );
 
 // server.post("/api/towns/", jsonParser, function(req, res) {

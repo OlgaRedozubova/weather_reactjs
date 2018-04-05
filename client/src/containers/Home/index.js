@@ -46,6 +46,7 @@ class Index extends Component {
     callApi_City = async () => {
         const response = await fetch('/api/weather/' + this.state.townValue);
         const body = await response.json();
+       // if (response.status === 304) {console.log('304')}
         if (response.status !== 200) throw Error(body.message);
         return body.main;
     };
@@ -55,17 +56,20 @@ class Index extends Component {
         e.preventDefault();
 
         this.callApi_City()
-            .then(res => {this.setState({bodyCity: res,
-                isCity: true,
-                city: this.state.townValue})})
-            .catch(err => console.log(err));
-
+            .then(res => {
+                console.log('res',res);
+                if(res) {
+                    this.setState({bodyCity: res,
+                    isCity: true,
+                    city: this.state.townValue})
+                }})
+            .catch(err => console.log('err_setCity', err));
     };
 
 
     addTown = () => {
 
-        fetch('/api/towns/', {
+        fetch('/api/towns', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -75,18 +79,45 @@ class Index extends Component {
                 name: this.state.townValue,
             })
         })
+         .then((res) => {
+            // console.log('res',res);
+             //console.log('req',req);
+             if (res.status === 200) {console.log("OK")
+             return res.json()}
 
-        // .then((req,res) => {console.log('res',res.status);
-        //
-        // })
+         })
+         .then(function(data){ console.log('addTown', JSON.stringify( data ) ) })
         .catch(err => console.log('err', err));
+
 
     };
 
-    addTownRefresh =() => {
-        this.addTown();
-        this.refreshPage();
 
+    callApi_Town = async () => {
+        const response = await fetch('/api/weather', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: this.state.townValue,
+            })}
+            );
+        const body = await response.json();
+        if (response.status !== 200) throw Error(body.message);
+        return body;
+    };
+
+    addTownRefresh =() => {
+        this.callApi_Town()
+            .then(res => {
+                this.setState({
+                    body: res,
+                });
+                console.log('body', this.state.body);
+            })
+            .catch(err => console.log(err));
     };
 
     getValidationState() {
@@ -103,7 +134,7 @@ class Index extends Component {
     };
 
     render(){
-
+        //this.refreshPage();
         const listTowns = [...this.state.body];
         return (
             <div className="home">
@@ -121,28 +152,32 @@ class Index extends Component {
                             onChange={this.handleChange}
                         />
                         <Button  type="submit">OK</Button>
-                        <Button bsStyle="success" onClick={this.addTown}>Add</Button>
-                        <Button bsStyle="success" onClick={this.refreshPage}>Refresh</Button>
+                        {/*<Button bsStyle="success" onClick={this.addTownRefresh}>Add_Refresh</Button>*/}
+                        {/*<Button bsStyle="success" onClick={this.addTown}>Add</Button>*/}
+                        {/*<Button bsStyle="success" onClick={this.refreshPage}>Refresh</Button>*/}
                     </FormGroup>
                 </Form>
-                <ButtonToolbar>
-                    {/*<Button bsStyle="success" onClick={this.addTown}>Add</Button>*/}
-                    <Button bsStyle="success" onClick={this.addTownRefresh}>Add_Refresh</Button>
-                </ButtonToolbar>
+                {/*<ButtonToolbar>*/}
+                    {/*/!*<Button bsStyle="success" onClick={this.addTown}>Add</Button>*!/*/}
+                    {/*<Button bsStyle="success" onClick={this.addTownRefresh}>Add_Refresh</Button>*/}
+                {/*</ButtonToolbar>*/}
 
                 <div>
                     <h2>Первоначальные данные:</h2>
                     <Grid>
                         <Row>
+                            {this.state.isCity &&
                             <Col sm={6} md={4}>
-                            Выберите город
-                                {this.state.isCity &&
-                                <Weather {...this.state}/>}
+                                <div className="title_left">
 
-                            </Col>
+                                    <h3>Weather in the <strong> {this.state.townValue}</strong></h3>
+                                    <Button bsSize="xsmall" bsStyle="success" onClick={this.addTownRefresh}>Like</Button>
+                                </div>
+
+                                <Weather {...this.state}/>
+
+                            </Col>}
                             <Col sm={6} md={8}>
-                            temp
-
                                 <Table striped bordered condensed hover>
                                     <thead>
                                     <tr>
