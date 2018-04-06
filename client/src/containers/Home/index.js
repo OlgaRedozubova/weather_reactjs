@@ -8,9 +8,9 @@ class Index extends Component {
     state = {
         response: '',
         body: {},
-        bodyCity: {},
+        //bodyCity: {},
+        town: {},
         isCity:false,
-        isAlreadyAdd:false,
         isNotTown:false,
         townValue:'',
         townName: ''
@@ -20,7 +20,19 @@ class Index extends Component {
             .then(res => {this.setState({
                 body: res,
             });
-                console.log('body', this.state.body);
+            const body = this.state.body[0].main;
+            const townName = this.state.body[0].name;
+
+            console.log('body', body);
+
+            this.setState({
+               // bodyCity: body,
+                town: this.state.body[0],
+                isCity: true,
+                townName: townName,
+                townValue: townName,
+                isNotTown: false,
+            });
             })
             .catch(err => console.log(err));
     };
@@ -49,7 +61,8 @@ class Index extends Component {
         const response = await fetch('/api/weather/' + this.state.townValue);
         const body = await response.json();
         if (response.status !== 200) throw Error(body.message);
-        return body.main;
+//        return body.main;
+        return body;
     };
 
 
@@ -61,11 +74,11 @@ class Index extends Component {
                 console.log('res',res);
                 if(res) {
                     this.setState({
-                        bodyCity: res,
+                       // bodyCity: res,
+                        town: res,
                         isCity: true,
                         townName: this.state.townValue,
-                        isNotTown: false,
-                        isAlreadyAdd: false
+                        isNotTown: false
                     })
                 } else {
                     alert('Внимание! Нет такого города!');
@@ -93,7 +106,6 @@ class Index extends Component {
             if (response.status !== 200) throw Error(body.message);
             return body;
         } else {
-            this.setState({isAlreadyAdd:true});
             this.rowColor(response.statusText);
             console.log('204', response.statusText);
         }
@@ -104,8 +116,7 @@ class Index extends Component {
             .then(res => {
                 if (res) {
                     this.setState({
-                        body: res,
-                        isAlreadyAdd:false
+                        body: res
                     });
                 }
             })
@@ -124,8 +135,7 @@ getValidationState() {
 
     handleChange = (e) => {
         console.log(e.target.value);
-          this.setState({ townValue: e.target.value,
-              isAlreadyAdd: false
+          this.setState({ townValue: e.target.value
             });
     };
 
@@ -152,8 +162,7 @@ getValidationState() {
             .then(res => {
                 if (res) {
                     this.setState({
-                        body: res,
-                        isAlreadyAdd:false
+                        body: res
                     });
                 }
             })
@@ -171,13 +180,14 @@ getValidationState() {
     showTownLike = (item, id) => {
         console.log('show', item);
         this.setState({
-            bodyCity: item.main,
+           // bodyCity: item.main,
+            town: item,
             isCity: true,
             townName: item.name,
             townValue: item.name,
-            isNotTown: false,
-            isAlreadyAdd: false
+            isNotTown: false
         });
+        this.rowColor(id);
     };
 
     render(){
@@ -193,7 +203,7 @@ getValidationState() {
                         <ControlLabel>Город </ControlLabel>
                         <FormControl
                             type="text"
-                           // value = {this.state.townValue}
+                          //  value = {this.state.townValue}
                             placeholder="Please, input the city"
                             onChange={this.handleChange}
                         />
@@ -201,7 +211,7 @@ getValidationState() {
                     </FormGroup>
                 </Form>
                 <div>
-                    <h2>Первоначальные данные:</h2>
+                    {/*<h2>Первоначальные данные:</h2>*/}
                     <Grid>
                         <Row>
                             <Col sm={6} md={4}>
@@ -212,18 +222,11 @@ getValidationState() {
                                 }
 
                                 {this.state.isCity &&
-                                <div>
-                                    <div className="title_left">
-
-                                        <h3>Weather in the <strong> {this.state.townName}</strong></h3>
+                                <div className="town_weather">
+                                    <div className="btn_like">
                                         <Button bsSize="xsmall" bsStyle="success"
                                                 onClick={this.addTownLikeList}>Like</Button>
-
-                                        {/*{this.state.isAlreadyAdd &&*/}
-                                            {/*alert('Town ' + this.state.townName  + ' already exists in LikeList!')*/}
-                                        {/*}*/}
                                     </div>
-
                                     <Weather {...this.state}/>
                                 </div>
                                 }

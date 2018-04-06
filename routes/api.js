@@ -212,7 +212,6 @@ router.route("/towns/")
         });
 
 
-
         }
     );
 
