@@ -224,6 +224,7 @@ class Index extends Component {
                                         <th>Humidity</th>
                                         <th>Temp min</th>
                                         <th>Temp max</th>
+                                        <th>Del</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -236,6 +237,13 @@ class Index extends Component {
                                         <td>{item.main.humidity}</td>
                                         <td>{item.main.temp_min}</td>
                                         <td>{item.main.temp_max}</td>
+                                        <td>
+                                            <Button
+                                                bsSize="xsmall" bsStyle="danger"
+                                            >
+                                            del
+                                            </Button>
+                                        </td>
                                     </tr>)
                                     )}
 

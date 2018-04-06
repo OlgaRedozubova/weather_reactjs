@@ -1,6 +1,7 @@
 const express = require('express');
 const server = express();
 const fs = require('fs');
+
 const routerWeather = express.Router();
 const routerTowns = express.Router();
 
@@ -100,7 +101,6 @@ routerWeather.route("/")
                     const towns = JSON.parse(file);
                     let isNeedAddTown = true;
 //------------------------------
-
                     for (key in towns) {
                         if (towns[key].name === town.name) {
                             isNeedAddTown = false;

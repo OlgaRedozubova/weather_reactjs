@@ -63,6 +63,14 @@
 .title_left strong {
   text-transform: uppercase;
 }
+.row {
+    border: 1px solid rgb(221, 221, 221);
+    padding-top: 15px;
+}
+.title_left {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
