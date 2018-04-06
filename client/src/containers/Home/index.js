@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, ButtonToolbar, Form, FormGroup, ControlLabel, FormControl, Grid, Row, Col, Table } from 'react-bootstrap';
+import { Button, Form, FormGroup, ControlLabel, FormControl, Grid, Row, Col, Table } from 'react-bootstrap';
 
 import Weather from '../../components/Weather/index';
 
@@ -34,21 +34,20 @@ class Index extends Component {
         return body;
     };
 
-
-    refreshPage = () => {
-        this.callApi()
-            .then(res => {this.setState({
-                body: res,
-            });
-                console.log('body', this.state.body);
-            })
-            .catch(err => console.log(err));
-    };
+    //
+    // refreshPage = () => {
+    //     this.callApi()
+    //         .then(res => {this.setState({
+    //             body: res,
+    //         });
+    //             console.log('body', this.state.body);
+    //         })
+    //         .catch(err => console.log(err));
+    // };
 
     callApi_City = async () => {
         const response = await fetch('/api/weather/' + this.state.townValue);
         const body = await response.json();
-      //  if (response.status === 304) {console.log('304')}
         if (response.status !== 200) throw Error(body.message);
         return body.main;
     };
@@ -66,9 +65,8 @@ class Index extends Component {
                         isCity: true,
                         townName: this.state.townValue,
                         isNotTown: false,
-                        //city: this.state.townValue,
-
-                        isAlreadyAdd: false})
+                        isAlreadyAdd: false
+                    })
                 } else {
                     alert('Внимание! Нет такого города!');
                     this.setState({
@@ -79,35 +77,7 @@ class Index extends Component {
             .catch(err => console.log('err_setCity', err));
     };
 
-
-    addTown = () => {
-
-        fetch('/api/towns', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: this.state.townValue,
-                isAlreadyAdd: false
-            })
-        })
-         .then((res) => {
-            // console.log('res',res);
-             //console.log('req',req);
-             if (res.status === 200) {console.log("OK")
-             return res.json()}
-
-         })
-         .then(function(data){ console.log('addTown', JSON.stringify( data ) ) })
-        .catch(err => console.log('err', err));
-
-
-    };
-
-
-    callApi_Town = async () => {
+    callApi_TownLikeList = async () => {
         const response = await fetch('/api/weather', {
             method: 'POST',
             headers: {
@@ -118,18 +88,19 @@ class Index extends Component {
                 name: this.state.townValue,
             })}
             );
-        if (response.status !== 204) {
+        if (response.status !== 403) {
             const body = await response.json();
             if (response.status !== 200) throw Error(body.message);
             return body;
         } else {
-            this.setState({isAlreadyAdd:true})
+            this.setState({isAlreadyAdd:true});
+            this.rowColor(response.statusText);
+            console.log('204', response.statusText);
         }
     };
 
-    addTownRefresh =() => {
-
-        this.callApi_Town()
+    addTownLikeList =() => {
+        this.callApi_TownLikeList()
             .then(res => {
                 if (res) {
                     this.setState({
@@ -137,12 +108,13 @@ class Index extends Component {
                         isAlreadyAdd:false
                     });
                 }
-                //console.log('res', res.status);
             })
             .catch(err => console.log(err));
     };
 
-    getValidationState() {
+
+
+getValidationState() {
         const length = this.state.townValue.length;
         if (length > 3) return 'success';
         else if (length > 2) return 'warning';
@@ -157,8 +129,58 @@ class Index extends Component {
             });
     };
 
+
+    callApi_DelTownLikeList = async (townName) => {
+        console.log('del', townName);
+        const response = await fetch('/api/weather', {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: townName,
+            })}
+        );
+        const body = await response.json();
+        if (response.status !== 200) throw Error(body.message);
+        return body;
+    };
+
+    delTownLike = (name) => {
+        this.callApi_DelTownLikeList(name)
+            .then(res => {
+                if (res) {
+                    this.setState({
+                        body: res,
+                        isAlreadyAdd:false
+                    });
+                }
+            })
+            .catch(err => console.log(err));
+    };
+
+    rowColor = (id) => {
+        const rowList = document.getElementById('likeTable').childNodes;
+        for (let i= 0; i< rowList.length; i++) {
+            rowList[i].style.background = "none";
+        }
+        document.getElementById(id).style.background = "#f9f9f9";
+    };
+
+    showTownLike = (item, id) => {
+        console.log('show', item);
+        this.setState({
+            bodyCity: item.main,
+            isCity: true,
+            townName: item.name,
+            townValue: item.name,
+            isNotTown: false,
+            isAlreadyAdd: false
+        });
+    };
+
     render(){
-        //this.refreshPage();
         const listTowns = [...this.state.body];
         return (
             <div className="home">
@@ -176,16 +198,8 @@ class Index extends Component {
                             onChange={this.handleChange}
                         />
                         <Button  type="submit">OK</Button>
-                        {/*<Button bsStyle="success" onClick={this.addTownRefresh}>Add_Refresh</Button>*/}
-                        {/*<Button bsStyle="success" onClick={this.addTown}>Add</Button>*/}
-                        {/*<Button bsStyle="success" onClick={this.refreshPage}>Refresh</Button>*/}
                     </FormGroup>
                 </Form>
-                {/*<ButtonToolbar>*/}
-                    {/*/!*<Button bsStyle="success" onClick={this.addTown}>Add</Button>*!/*/}
-                    {/*<Button bsStyle="success" onClick={this.addTownRefresh}>Add_Refresh</Button>*/}
-                {/*</ButtonToolbar>*/}
-
                 <div>
                     <h2>Первоначальные данные:</h2>
                     <Grid>
@@ -203,11 +217,11 @@ class Index extends Component {
 
                                         <h3>Weather in the <strong> {this.state.townName}</strong></h3>
                                         <Button bsSize="xsmall" bsStyle="success"
-                                                onClick={this.addTownRefresh}>Like</Button>
+                                                onClick={this.addTownLikeList}>Like</Button>
 
-                                        {this.state.isAlreadyAdd &&
-                                            alert('Town ' + this.state.townName  + ' already exists in LikeList!')
-                                        }
+                                        {/*{this.state.isAlreadyAdd &&*/}
+                                            {/*alert('Town ' + this.state.townName  + ' already exists in LikeList!')*/}
+                                        {/*}*/}
                                     </div>
 
                                     <Weather {...this.state}/>
@@ -215,7 +229,7 @@ class Index extends Component {
                                 }
                             </Col>
                             <Col sm={6} md={8}>
-                                <Table striped bordered condensed hover>
+                                <Table bordered condensed hover>
                                     <thead>
                                     <tr>
                                         <th>Name</th>
@@ -227,19 +241,21 @@ class Index extends Component {
                                         <th>Del</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="likeTable">
 
                                     {listTowns.map((item, index) => (
-                                    <tr key={index}>
-                                        <td>{item.name}</td>
-                                        <td>{item.main.temp}</td>
-                                        <td>{item.main.pressure}</td>
-                                        <td>{item.main.humidity}</td>
-                                        <td>{item.main.temp_min}</td>
-                                        <td>{item.main.temp_max}</td>
+                                    <tr key={index} id = {index}>
+                                        <td onClick={() => this.showTownLike(item, index)}>{item.name}</td>
+                                        <td onClick={() => this.showTownLike(item, index)}>{item.main.temp}</td>
+                                        <td onClick={() => this.showTownLike(item, index)}>{item.main.pressure}</td>
+                                        <td onClick={() => this.showTownLike(item, index)}>{item.main.humidity}</td>
+                                        <td onClick={() => this.showTownLike(item, index)}>{item.main.temp_min}</td>
+                                        <td onClick={() => this.showTownLike(item, index)}>{item.main.temp_max}</td>
+
                                         <td>
                                             <Button
                                                 bsSize="xsmall" bsStyle="danger"
+                                                onClick={() => this.delTownLike(item.name)}
                                             >
                                             del
                                             </Button>
