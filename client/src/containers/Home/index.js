@@ -59,10 +59,16 @@ class Index extends Component {
 
     callApi_City = async () => {
         const response = await fetch('/api/weather/' + this.state.townValue);
-        const body = await response.json();
-        if (response.status !== 200) throw Error(body.message);
-//        return body.main;
-        return body;
+        console.log('response',response.status);
+        if (response.status !== 304) {
+            const body = await response.json();
+
+            //console.log('body',body);
+            if (body.name){
+                if (response.status !== 200) throw Error(body.message);
+                return body;
+            }
+        }
     };
 
 
@@ -98,7 +104,8 @@ class Index extends Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                name: this.state.townValue,
+                //name: this.state.townValue,
+                name: this.state.town.name,
             })}
             );
         if (response.status !== 403) {

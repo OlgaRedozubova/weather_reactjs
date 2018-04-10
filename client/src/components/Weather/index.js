@@ -1,5 +1,6 @@
 import React from 'react';
 import {Table, Button } from 'react-bootstrap';
+// import d01 from '../../assets/images/01d.png';
 
 export default(props) => {
     const town = props.town;
@@ -32,12 +33,17 @@ export default(props) => {
 
         return `${h}:${m}  ${arrMonth[m]} ${d}`;
     }
+    function getPng(imgName) {
+
+    }
     return (
      <div>
        <div className="table_header">
            <h3><strong> Weather in {town.name}, {town.sys.country}</strong></h3>
            <p>
-               <img src={`../../assets/images/${town.weather[0].icon}.png`}></img>
+               {console.log(`../../assets/images/${town.weather[0].icon}.png`)}
+               {/*<img src={(require(`../../assets/images/${town.weather[0].icon}.png`)}></img>*/}
+               <img src={`https://openweathermap.org/img/w/${town.weather[0].icon}.png`}></img>
                <strong>{town.main.temp} <sup>0</sup>C</strong></p>
            <p>{town.weather[0].description.charAt(0).toUpperCase() + town.weather[0].description.substr(1)}</p>
            <p>{getDateNaw()}</p>

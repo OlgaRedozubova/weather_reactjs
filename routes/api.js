@@ -167,11 +167,21 @@ router.route("/weather/:id")
 
         })
             .then(function(responseData){
-                return res.json(responseData);
+                console.log('1',req);
+                //return res.json(responseData);
+                if (responseData.cod !== 200){
+                    console.log(304);
+                    //return
+                   return res.sendStatus(304);
+                }else {
+                    return res.json(responseData);}
+
             })
             .catch(function(err){
+                console.log('3',err);
                 return res.json(err);
-            });
+            })
+            .finally(() => {console.log('OK', res.statusCode)});
     });
 
 
