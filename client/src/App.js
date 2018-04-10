@@ -6,7 +6,8 @@ import './assets/style/App.css';
 
 import Header from './components/Header';
 import Home from './containers/Home';
-import Towns from './containers/Towns';
+import Time from './containers/Time/index';
+// import Towns from './containers/Towns';
 
 class App extends Component {
   render() {
@@ -15,8 +16,10 @@ class App extends Component {
         <div className="App">
           <Header/>
 
+
           <Route exact path="/" component={Home} />
-          <Route path="/towns" component={Towns} />
+          <Route path="/time" component={Time} />
+          {/*<Route path="/towns" component={Towns} />*/}
 
         </div>
       </Router>

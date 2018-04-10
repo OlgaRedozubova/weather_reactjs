@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): index.js
+ * Bootstrap (v4.0.0-alpha.6): index.jsx
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -20,4 +20,4 @@
     throw new Error('Bootstrap\'s JavaScript requires at least jQuery v1.9.1 but less than v4.0.0');
   }
 })($);
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.jsx.map

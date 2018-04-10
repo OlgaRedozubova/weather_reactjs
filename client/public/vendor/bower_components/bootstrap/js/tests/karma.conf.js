@@ -19,7 +19,7 @@ module.exports = (config) => {
       'assets/js/vendor/popper.min.js',
       'js/dist/util.js',
       'js/dist/tooltip.js',
-      'js/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
+      'js/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.jsx and tooltip.js
       'js/tests/unit/*.js'
     ],
     reporters: ['dots'],

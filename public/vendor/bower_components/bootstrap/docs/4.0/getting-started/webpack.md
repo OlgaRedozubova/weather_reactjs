@@ -12,7 +12,7 @@ toc: true
 
 ## Importing JavaScript
 
-Import [Bootstrap's JavaScript]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/) by adding this line to your server's entry point (usually `index.js` or `server.js.js`):
+Import [Bootstrap's JavaScript]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/) by adding this line to your server's entry point (usually `index.jsx` or `server.js.js`):
 
 {% highlight js %}
 import 'bootstrap';

@@ -2,10 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fb87d9e-a1e0-4b2d-8b3a-c863886e65be" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/containers/Time/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Weather/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Weather/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/containers/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/containers/Home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/client/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/build/rollup.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/build/rollup.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/dist/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/dist/js/bootstrap.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/dist/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/dist/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/docs/4.0/getting-started/webpack.md" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/docs/4.0/getting-started/webpack.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/js/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/js/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/js/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/js/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/js/tests/karma.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/vendor/bower_components/bootstrap/js/tests/karma.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Header/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/build/rollup.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/build/rollup.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/dist/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/dist/js/bootstrap.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/dist/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/dist/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/docs/4.0/getting-started/webpack.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/docs/4.0/getting-started/webpack.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/js/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/js/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/js/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/js/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/js/tests/karma.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/bower_components/bootstrap/js/tests/karma.conf.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/towns.json" beforeDir="false" afterPath="$PROJECT_DIR$/towns.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,14 +36,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5664462">
+    <splitter split-orientation="horizontal" split-proportion="0.6764883">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/routes/api.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="241">
-                  <caret line="172" column="37" lean-forward="true" selection-start-line="172" selection-start-column="37" selection-end-line="172" selection-end-column="37" />
+                  <caret line="172" column="37" selection-start-line="172" selection-start-column="37" selection-end-line="172" selection-end-column="37" />
                   <folding>
                     <element signature="e#374#401#0" />
                   </folding>
@@ -38,7 +55,7 @@
             <entry file="file://$PROJECT_DIR$/client/src/components/Weather/index.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="480">
-                  <caret line="35" column="30" lean-forward="true" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+                  <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -49,9 +66,34 @@
           <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/src/components/Header/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
+                <state relative-caret-position="75">
+                  <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
                   <folding>
                     <element signature="e#0#27#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/src/App.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="450">
+                  <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+                  <folding>
+                    <element signature="e#0#41#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.jsx" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/src/containers/Time/index.jsx">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="330">
+                  <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+                  <folding>
+                    <element signature="e#783#809#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -66,16 +108,16 @@
             <entry file="file://$PROJECT_DIR$/towns.json">
               <provider selected="true" editor-type-id="text-editor">
                 <state>
-                  <caret column="119" selection-start-column="119" selection-end-column="119" />
+                  <caret column="67" selection-start-column="67" selection-end-column="67" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/src/containers/Home/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="132">
-                  <caret line="93" column="17" lean-forward="true" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
+                <state relative-caret-position="-123">
+                  <caret line="106" column="14" selection-start-line="106" selection-start-column="14" selection-end-line="106" selection-end-column="14" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                     <element signature="e#1262#1264#0" />
@@ -110,7 +152,7 @@
             <entry file="file://$PROJECT_DIR$/package.json">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="360">
-                  <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+                  <caret line="24" selection-start-line="24" selection-end-line="24" />
                 </state>
               </provider>
             </entry>
@@ -118,8 +160,8 @@
           <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/src/containers/Towns/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="82">
-                  <caret line="105" column="28" lean-forward="true" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
+                <state relative-caret-position="338">
+                  <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                   </folding>
@@ -155,6 +197,11 @@
         <option value="$PROJECT_DIR$/routes/api.js" />
         <option value="$PROJECT_DIR$/towns.json" />
         <option value="$PROJECT_DIR$/client/src/containers/Home/index.js" />
+        <option value="$PROJECT_DIR$/client/src/containers/Rxjs/index.js" />
+        <option value="$PROJECT_DIR$/client/src/containers/Rxjs/index.jsx" />
+        <option value="$PROJECT_DIR$/client/src/components/Header/index.js" />
+        <option value="$PROJECT_DIR$/client/src/App.js" />
+        <option value="$PROJECT_DIR$/client/src/containers/Time/index.jsx" />
       </list>
     </option>
   </component>
@@ -253,14 +300,6 @@
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Header" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="weather-reactjs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="weather-reactjs" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Weather" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -277,6 +316,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
               <item name="Home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="weather-reactjs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="weather-reactjs" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="Time" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="weather-reactjs" type="b2602c69:ProjectViewProjectNode" />
@@ -344,12 +391,12 @@
       <updated>1522769527036</updated>
       <workItem from="1522769533261" duration="10330000" />
       <workItem from="1522993403169" duration="31384000" />
-      <workItem from="1523335897841" duration="10511000" />
+      <workItem from="1523335897841" duration="24913000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52225000" />
+    <option name="totallyTimeSpent" value="66627000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="25" width="1922" height="1032" extended-state="6" />
@@ -359,6 +406,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="npm" order="2" side_tool="true" />
@@ -372,7 +420,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -482,7 +529,7 @@
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
@@ -496,15 +543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Header/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -514,8 +552,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/containers/Towns/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="105" column="28" lean-forward="true" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
+        <state relative-caret-position="338">
+          <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -525,7 +563,7 @@
     <entry file="file://$PROJECT_DIR$/routes/api.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
-          <caret line="172" column="37" lean-forward="true" selection-start-line="172" selection-start-column="37" selection-end-line="172" selection-end-column="37" />
+          <caret line="172" column="37" selection-start-line="172" selection-start-column="37" selection-end-line="172" selection-end-column="37" />
           <folding>
             <element signature="e#374#401#0" />
           </folding>
@@ -535,27 +573,71 @@
     <entry file="file://$PROJECT_DIR$/towns.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="119" selection-start-column="119" selection-end-column="119" />
+          <caret column="67" selection-start-column="67" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/containers/Home/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-123">
+          <caret line="106" column="14" selection-start-line="106" selection-start-column="14" selection-end-line="106" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#1262#1264#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/Weather/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
-          <caret line="35" column="30" lean-forward="true" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+          <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/containers/Home/index.js">
+    <entry file="file://$PROJECT_DIR$/client/src/components/Header/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="93" column="17" lean-forward="true" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
+        <state relative-caret-position="75">
+          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#1262#1264#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/node_modules/rx-connect/lib/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/node_modules/rxjs-react-component/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/containers/Time/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+          <folding>
+            <element signature="e#783#809#0" expanded="true" />
           </folding>
         </state>
       </provider>
