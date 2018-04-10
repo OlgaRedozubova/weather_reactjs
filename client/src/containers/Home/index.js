@@ -8,7 +8,6 @@ class Index extends Component {
     state = {
         response: '',
         body: {},
-        //bodyCity: {},
         town: {},
         isCity:false,
         isNotTown:false,
@@ -26,7 +25,6 @@ class Index extends Component {
             console.log('body', body);
 
             this.setState({
-               // bodyCity: body,
                 town: this.state.body[0],
                 isCity: true,
                 townName: townName,
@@ -63,7 +61,6 @@ class Index extends Component {
         if (response.status !== 304) {
             const body = await response.json();
 
-            //console.log('body',body);
             if (body.name){
                 if (response.status !== 200) throw Error(body.message);
                 return body;
@@ -80,7 +77,6 @@ class Index extends Component {
                 console.log('res',res);
                 if(res) {
                     this.setState({
-                       // bodyCity: res,
                         town: res,
                         isCity: true,
                         townName: this.state.townValue,
@@ -104,7 +100,6 @@ class Index extends Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                //name: this.state.townValue,
                 name: this.state.town.name,
             })}
             );
@@ -187,7 +182,6 @@ getValidationState() {
     showTownLike = (item, id) => {
         console.log('show', item);
         this.setState({
-           // bodyCity: item.main,
             town: item,
             isCity: true,
             townName: item.name,
@@ -210,7 +204,6 @@ getValidationState() {
                         <ControlLabel>Город </ControlLabel>
                         <FormControl
                             type="text"
-                          //  value = {this.state.townValue}
                             placeholder="Please, input the city"
                             onChange={this.handleChange}
                         />
@@ -218,7 +211,6 @@ getValidationState() {
                     </FormGroup>
                 </Form>
                 <div>
-                    {/*<h2>Первоначальные данные:</h2>*/}
                     <Grid>
                         <Row>
                             <Col sm={6} md={4}>
@@ -281,11 +273,7 @@ getValidationState() {
                     </Grid>
 
                 </div>
-                {/*<div className="container">*/}
 
-                    {/*{this.state.isCity &&*/}
-                    {/*<Weather {...this.state}/>}*/}
-                {/*</div>*/}
             </div>
         )
     }
